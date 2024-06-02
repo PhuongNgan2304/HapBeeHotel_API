@@ -1,6 +1,11 @@
 package com.hotel.hotelapi.model;
 
 import com.hotel.hotelapi.entity.BranchEntity;
+<<<<<<< HEAD
+=======
+//import com.hotel.hotelapi.entity.Branch_RoomTypeEntity;
+import com.hotel.hotelapi.entity.RoomTypeEntity;
+>>>>>>> 2c31b00 (update commit)
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -12,10 +17,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoomModel {
     private int id;
+<<<<<<< HEAD
     private BranchEntity branch;
     private float aceage; //Thông số về diện tích
     private int floor; //Lầu Note: (0: Tầng G)
     private int number; //Số phòng
     private String line; //Dãy (A hoặc B)
     private int size; //Số giường
+=======
+    private String number; //Số phòng
+    private String roomType;
+    private boolean isDeleted;
+    private String status;
+>>>>>>> 2c31b00 (update commit)
 }

@@ -6,6 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+>>>>>>> 2c31b00 (update commit)
 
 @Entity
 @Data
@@ -20,7 +26,20 @@ public class ServiceEntity implements Serializable {
 
     private String name;
     private double price;
+<<<<<<< HEAD
     private double salePercent; //Phan tram giam gia
     private String description;
     private String image;
+=======
+    private String description;
+    private boolean isDeleted;
+
+
+    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ServiceImageEntity> images;
+
+    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BookingServiceEntity> booking_services;
+
+>>>>>>> 2c31b00 (update commit)
 }

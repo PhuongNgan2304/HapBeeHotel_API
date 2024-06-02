@@ -6,6 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+>>>>>>> 2c31b00 (update commit)
 
 @Entity
 @Data
@@ -19,6 +25,17 @@ public class BranchEntity implements Serializable {
     private int id;
 
     private String location;
+<<<<<<< HEAD
 //    private double acreage; //Đây là thông số về diện tích
     private String image;
+=======
+//    private String image;
+    private boolean isDeleted;
+    @OneToMany (mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BranchImageEntity> images;
+
+    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RoomEntity> rooms;
+
+>>>>>>> 2c31b00 (update commit)
 }

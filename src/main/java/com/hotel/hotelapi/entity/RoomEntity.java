@@ -7,6 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+>>>>>>> 2c31b00 (update commit)
 
 @Entity
 @Data
@@ -19,6 +25,7 @@ public class RoomEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name = "branchId")
     private BranchEntity branch;
@@ -30,4 +37,19 @@ public class RoomEntity implements Serializable {
     private int size; //Số giường
 
 
+=======
+    private String number; //Số phòng: A101, A102, B101, B102, A,B  chính là dãy phòng.
+    private boolean isDeleted;
+
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private BranchEntity branch;
+
+    @ManyToOne
+    @JoinColumn(name = "roomType_id")
+    private RoomTypeEntity roomType;
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BookingEntity> bookings;
+>>>>>>> 2c31b00 (update commit)
 }

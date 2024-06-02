@@ -18,9 +18,15 @@ public class RateEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name = "bookId")
     private BookEntity book;
+=======
+//    @ManyToOne
+//    @JoinColumn(name = "orderId")
+//    private OrderEntity order;
+>>>>>>> 2c31b00 (update commit)
 
     private int star; //1-5
     private String comment;
