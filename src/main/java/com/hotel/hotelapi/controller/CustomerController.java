@@ -1,23 +1,15 @@
 package com.hotel.hotelapi.controller;
 
-<<<<<<< HEAD
 import com.hotel.hotelapi.model.CustomerModel;
 import com.hotel.hotelapi.model.Response;
-import com.hotel.hotelapi.model.RoomModel;
 import com.hotel.hotelapi.service.CustomerServiceImpl;
 import com.hotel.hotelapi.service.ICustomerService;
-import com.hotel.hotelapi.service.IRoomService;
-import com.hotel.hotelapi.service.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
-=======
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
->>>>>>> b375edd (contact)
 
 @RestController
 @RequestMapping("api/customer")

@@ -45,9 +45,9 @@ public class AuthenticationService {
 //    Gửi code
     String code = this.getRandom();
 //    account.setCode(code);
-    String body = "Mã xác nhận Happy Hotel Service của bạn là: "+code+" ! Nếu bạn không đăng ký" +
-            "Happy Hotel Service thì hãy bỏ qua email này!";
-    emailService.sendEmail("Happy Hotel Team",request.getEmail(),"Confirm email",body);
+    String body = "Mã xác nhận HapBee Hotel Service của bạn là: "+code+" ! Nếu bạn không đăng ký" +
+            "HapBee Hotel Service thì hãy bỏ qua email này!";
+    emailService.sendEmail("HapBee Hotel Team",request.getEmail(),"Confirm email",body);
 //    account.setCode(getRandom());
 
     var user = UserEntity.builder()

@@ -1,16 +1,6 @@
 package com.hotel.hotelapi.service;
 
 import com.hotel.hotelapi.entity.BranchEntity;
-<<<<<<< HEAD
-import com.hotel.hotelapi.entity.ServiceEntity;
-import com.hotel.hotelapi.model.BranchModel;
-import com.hotel.hotelapi.model.ServiceModel;
-import com.hotel.hotelapi.repository.BranchRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-=======
 import com.hotel.hotelapi.entity.BranchImageEntity;
 import com.hotel.hotelapi.entity.ServiceImageEntity;
 import com.hotel.hotelapi.model.BranchModel;
@@ -27,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
->>>>>>> 2c31b00 (update commit)
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,33 +25,20 @@ import java.util.stream.Collectors;
 public class BranchServiceImpl implements IBranchService{
     @Autowired
     private ModelMapper modelMapper;
-<<<<<<< HEAD
-
-    @Autowired
-    private BranchRepository branchRepository;
-    @Override
-    public BranchModel findById(int id) {
-        BranchEntity branchEntity = branchRepository.findById(id).orElse(null);
-=======
     @Autowired
     private BranchRepository branchRepository;
     @Autowired
     private FirebaseServiceImpl firebaseServiceImpl;
 
-//    @Autowired
+    //    @Autowired
 //    private RoomRepository roomRepository;
     @Override
     public BranchModel findByIdActive(int id) {
         BranchEntity branchEntity = branchRepository.findByIdAndIsDeletedFalse(id).orElse(null);
->>>>>>> 2c31b00 (update commit)
         return branchEntity != null ? modelMapper.map(branchEntity, BranchModel.class) : null;
     }
 
     @Override
-<<<<<<< HEAD
-    public BranchModel findByLocation(String location) {
-        BranchEntity branchEntity = branchRepository.findByLocation(location).orElse(null);
-=======
     public BranchModel findByIdInactive(int id) {
         BranchEntity branchEntity = branchRepository.findByIdAndIsDeletedTrue(id).orElse(null);
         return branchEntity != null ? modelMapper.map(branchEntity, BranchModel.class) : null;
@@ -87,7 +63,6 @@ public class BranchServiceImpl implements IBranchService{
     @Override
     public BranchModel findById(int id) {
         BranchEntity branchEntity = branchRepository.findById(id).orElse(null);
->>>>>>> 2c31b00 (update commit)
         return branchEntity != null ? modelMapper.map(branchEntity, BranchModel.class) : null;
     }
 
@@ -101,24 +76,6 @@ public class BranchServiceImpl implements IBranchService{
     }
 
     @Override
-<<<<<<< HEAD
-    public BranchModel create(BranchModel branchModel) {
-        BranchEntity branchEntity = modelMapper.map(branchModel, BranchEntity.class);
-        BranchEntity savedBranchEntity = branchRepository.save(branchEntity);
-        return modelMapper.map(savedBranchEntity, BranchModel.class);
-    }
-
-    @Override
-    public BranchModel update(int id, BranchModel branchDTO) {
-        Optional<BranchEntity> branchEntityOptional = branchRepository.findById(id);
-        if (branchEntityOptional.isPresent()){
-            BranchEntity branchEntity = branchEntityOptional.get();
-
-            //Update branchEntity with branchModel's fields
-            branchEntity.setImage(branchDTO.getImage());
-            branchEntity.setLocation(branchDTO.getLocation());
-
-=======
     public BranchModel create(BranchModel branchModel, List<MultipartFile> imageFiles) {
         BranchEntity branchEntity = modelMapper.map(branchModel, BranchEntity.class);
         if(imageFiles!=null && !imageFiles.isEmpty()){
@@ -193,7 +150,6 @@ public class BranchServiceImpl implements IBranchService{
                     e.printStackTrace();
                 }
             }
->>>>>>> 2c31b00 (update commit)
             //Save branchEntity
             BranchEntity updatedBranchEntity = branchRepository.save(branchEntity);
 
@@ -205,10 +161,6 @@ public class BranchServiceImpl implements IBranchService{
     }
 
     @Override
-<<<<<<< HEAD
-    public void delete(int id) {
-        branchRepository.deleteById(id);
-=======
     public boolean hide(int id) {
         Optional<BranchEntity> branchEntityOptional = branchRepository.findByIdAndIsDeletedFalse(id);
         if(branchEntityOptional.isPresent()){
@@ -276,10 +228,10 @@ public class BranchServiceImpl implements IBranchService{
     }
     @Override
     public List<BranchModel> findAllByRoomType(int id){
-            List<BranchEntity> branchEntities = branchRepository.findAllByAndRoomsRoomTypeIdAndIsDeletedIsFalse(id);
-            return branchEntities.stream()
-                    .map(branchEntity -> modelMapper.map(branchEntity, BranchModel.class))
-                    .collect(Collectors.toList());
+        List<BranchEntity> branchEntities = branchRepository.findAllByAndRoomsRoomTypeIdAndIsDeletedIsFalse(id);
+        return branchEntities.stream()
+                .map(branchEntity -> modelMapper.map(branchEntity, BranchModel.class))
+                .collect(Collectors.toList());
 
     }
 
@@ -289,6 +241,5 @@ public class BranchServiceImpl implements IBranchService{
         return branchEntities.stream()
                 .map(branchEntity -> modelMapper.map(branchEntity, BranchModel.class))
                 .collect(Collectors.toList());
->>>>>>> 2c31b00 (update commit)
     }
 }

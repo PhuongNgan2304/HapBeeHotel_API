@@ -26,7 +26,7 @@ public class FirebaseConfig {
                 FirebaseOptions options = new FirebaseOptions.Builder()
                         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                         .build();
-                FirebaseApp.initializeApp(options, "HOTEl_APP");
+                FirebaseApp.initializeApp(options, "HapBee Hotel");
                 firebaseAppInitialized = true;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -36,7 +36,10 @@ public class FirebaseConfig {
 
     @Bean
     public Storage firebaseStorage() throws IOException {
-        String projectId = FirebaseApp.getInstance("HOTEl_APP").getOptions().getProjectId();
+        // Ensure FirebaseApp is initialized before accessing it
+        initialize();
+
+        String projectId = FirebaseApp.getInstance("HapBee Hotel").getOptions().getProjectId();
         GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(SERVICE_ACCOUNT_KEY_PATH));
         StorageOptions storageOptions = StorageOptions.newBuilder()
                 .setProjectId(projectId)

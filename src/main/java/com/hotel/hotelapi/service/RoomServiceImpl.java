@@ -1,14 +1,5 @@
 package com.hotel.hotelapi.service;
 
-<<<<<<< HEAD
-import com.hotel.hotelapi.entity.BranchEntity;
-import com.hotel.hotelapi.entity.RoomEntity;
-import com.hotel.hotelapi.model.BranchModel;
-import com.hotel.hotelapi.model.RoomModel;
-import com.hotel.hotelapi.repository.BranchRepository;
-import com.hotel.hotelapi.repository.RoomRepository;
-import com.hotel.hotelapi.repository.ServiceRepository;
-=======
 import com.hotel.hotelapi.entity.BookingEntity;
 import com.hotel.hotelapi.entity.BranchEntity;
 import com.hotel.hotelapi.entity.RoomEntity;
@@ -17,16 +8,12 @@ import com.hotel.hotelapi.model.CheckInOutModel;
 import com.hotel.hotelapi.model.RoomModel;
 import com.hotel.hotelapi.model.RoomRequestModel;
 import com.hotel.hotelapi.repository.*;
->>>>>>> 2c31b00 (update commit)
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
 import java.time.LocalDateTime;
->>>>>>> 2c31b00 (update commit)
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -40,14 +27,6 @@ public class RoomServiceImpl implements IRoomService {
     private RoomRepository roomRepository;
 
     @Autowired
-<<<<<<< HEAD
-    private BranchRepository branchRepository;
-
-    @Override
-    public RoomModel findById(int id) {
-        RoomEntity roomEntity = roomRepository.findById(id).orElse(null);
-        return roomEntity != null ? modelMapper.map(roomEntity, RoomModel.class) : null;
-=======
     private BookingRepository bookingRepository;
     @Autowired
     private BranchRepository branchRepository;
@@ -73,7 +52,6 @@ public class RoomServiceImpl implements IRoomService {
                     return roomModel;
                 })
                 .collect(Collectors.toList());
->>>>>>> 2c31b00 (update commit)
     }
 
     @Override
@@ -93,41 +71,12 @@ public class RoomServiceImpl implements IRoomService {
 
     @Override
     public RoomModel update(int id, RoomModel RoomDTO) {
-<<<<<<< HEAD
-        Optional<RoomEntity> roomEntityOptional = roomRepository.findById(id);
-        if (roomEntityOptional.isPresent()) {
-            RoomEntity roomEntity = roomEntityOptional.get();
-
-            //Update branchEntity with branchModel's fields
-            roomEntity.setAceage(RoomDTO.getAceage());
-            roomEntity.setLine(RoomDTO.getLine());
-            roomEntity.setBranch(RoomDTO.getBranch());
-
-// BỎ         BranchEntity branchEntity = roomEntity.getBranch();
-//            branchEntity.setId(RoomDTO.getBranch().getId());
-//
-//            roomEntity.setBranch(branchEntity);
-
-
-//            int branchid = RoomDTO.getBranch().getId();
-//            BranchEntity branchEntity = branchRepository.findById(branchid)
-//                    .orElseThrow(() -> new EntityNotFoundException("Branch with ID " + branchid + "is not found"));
-//
-//            //Map BranchEntity to BranchModel and set it in the RoomModel
-//            BranchModel branchModel = modelMapper.map(branchEntity, BranchModel.class);
-//            RoomDTO.setBranch(branchModel);
-
-//            //Save RoomEntity and map to RoomModel
-                RoomEntity updatedRoomEntity = roomRepository.save(roomEntity);
-                return modelMapper.map(updatedRoomEntity, RoomModel.class);
-=======
         Optional<RoomEntity> roomEntityOptional = roomRepository.findByIdAndIsDeletedFalse(id);
         if (roomEntityOptional.isPresent()) {
             RoomEntity roomEntity = roomEntityOptional.get();
 
             RoomEntity updatedRoomEntity = roomRepository.save(roomEntity);
             return modelMapper.map(updatedRoomEntity, RoomModel.class);
->>>>>>> 2c31b00 (update commit)
 
         } else {
             throw new EntityNotFoundException("Room with ID" + id + "not found");
@@ -135,10 +84,6 @@ public class RoomServiceImpl implements IRoomService {
     }
 
     @Override
-<<<<<<< HEAD
-    public void delete(int id) {
-        roomRepository.deleteById(id);
-=======
     public boolean softDelete(int id) {
         Optional<RoomEntity> roomEntityOptional = roomRepository.findByIdAndIsDeletedFalse(id);
         if(roomEntityOptional.isPresent()){
@@ -188,6 +133,5 @@ public class RoomServiceImpl implements IRoomService {
         return savedRoomEntities.stream()
                 .map(savedRoomEntity -> modelMapper.map(savedRoomEntity, RoomModel.class))
                 .collect(Collectors.toList());
->>>>>>> 2c31b00 (update commit)
     }
 }

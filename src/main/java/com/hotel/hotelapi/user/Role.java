@@ -24,7 +24,11 @@ public enum Role {
                   MANAGER_READ,
                   MANAGER_UPDATE,
                   MANAGER_DELETE,
-                  MANAGER_CREATE
+                  MANAGER_CREATE,
+                  EMPLOYEE_READ,
+                  EMPLOYEE_UPDATE,
+                  EMPLOYEE_DELETE,
+                  EMPLOYEE_CREATE
           )
   ),
   MANAGER(
@@ -33,6 +37,15 @@ public enum Role {
                   MANAGER_UPDATE,
                   MANAGER_DELETE,
                   MANAGER_CREATE
+          )
+  ),
+
+  EMPLOYEE(
+          Set.of(
+          EMPLOYEE_READ,
+          EMPLOYEE_UPDATE,
+          EMPLOYEE_DELETE,
+          EMPLOYEE_CREATE
           )
   )
 

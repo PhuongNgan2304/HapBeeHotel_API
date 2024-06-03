@@ -13,13 +13,15 @@ public class EmailServiceImpl implements IEmailService{
     public boolean sendEmail(String from, String to, String subject,String body){
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("alotramilktea@gmail.com");
+            message.setFrom("hapbeehotel@gmail.com");
             message.setTo(to);
             message.setSubject(subject);
             message.setText(body);
             javaMailSender.send(message);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();  // Print the error stack trace
+            System.out.println("Error sending email: " + e.getMessage());
             return false;
         }
     }

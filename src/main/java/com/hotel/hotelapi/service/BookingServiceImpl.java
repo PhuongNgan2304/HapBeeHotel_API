@@ -70,10 +70,7 @@ public class BookingServiceImpl implements IBookingService {
         booking.setRoom(room);
         booking.setCheckIn(bookingRequestDTO.getCheckIn());
         booking.setCheckOut(bookingRequestDTO.getCheckOut());
-<<<<<<< HEAD
 //        booking.setPaymentStatus("waiting");
-=======
->>>>>>> 49920c3e0db1959ce24b628970dab4b37bf94900
 
         BookingEntity savedBooking = bookingRepository.save(booking);
 
@@ -159,7 +156,7 @@ public class BookingServiceImpl implements IBookingService {
         RoomModel roomModel = new RoomModel();
         roomModel.setId(room.getId());
         //roomModel.setStatus("isBooking?/isEmpty?");
-        roomModel.setNumber(room.getNumber());
+        roomModel.setNumber(Integer.parseInt(room.getNumber()));
         roomModel.setRoomType(room.getRoomType().getName());
         roomModel.setDeleted(room.isDeleted()); //trường is_deleted thì cần false (chưa đặt) --> mới cho đặt
         return roomModel;

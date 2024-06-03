@@ -7,12 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-=======
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
->>>>>>> 2c31b00 (update commit)
 
 @Entity
 @Data
@@ -25,19 +23,6 @@ public class RoomEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-<<<<<<< HEAD
-    @ManyToOne
-    @JoinColumn(name = "branchId")
-    private BranchEntity branch;
-
-    private float aceage; //Thông số về diện tích
-    private int floor; //Lầu Note: (0: Tầng G)
-    private int number; //Số phòng
-    private String line; //Dãy (A hoặc B)
-    private int size; //Số giường
-
-
-=======
     private String number; //Số phòng: A101, A102, B101, B102, A,B  chính là dãy phòng.
     private boolean isDeleted;
 
@@ -51,5 +36,4 @@ public class RoomEntity implements Serializable {
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BookingEntity> bookings;
->>>>>>> 2c31b00 (update commit)
 }

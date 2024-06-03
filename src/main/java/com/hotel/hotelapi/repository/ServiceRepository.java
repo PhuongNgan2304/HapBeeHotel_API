@@ -1,13 +1,6 @@
 package com.hotel.hotelapi.repository;
 
 import com.hotel.hotelapi.entity.ServiceEntity;
-<<<<<<< HEAD
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface ServiceRepository extends JpaRepository<ServiceEntity, Integer> {
-=======
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,5 +22,4 @@ public interface ServiceRepository extends JpaRepository<ServiceEntity, Integer>
     Page<ServiceEntity> findAllByIsDeletedFalse(Pageable pageable);
     Page<ServiceEntity> findByNameContainingIgnoreCaseAndIsDeletedFalse(String name, Pageable pageable);
 
->>>>>>> 2c31b00 (update commit)
 }

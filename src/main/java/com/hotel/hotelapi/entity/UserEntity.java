@@ -37,7 +37,6 @@ public class UserEntity implements UserDetails {
   private LocalDateTime createDay;
   private boolean isActive;
 
-
   @Enumerated(EnumType.STRING)
   private Role role;
 
